@@ -414,6 +414,7 @@ const PacMan = ({ isMobile }) => {
               alignItems: "center",
               scale: 4,
               gap: "10px",
+              backgroundColor:"transparent",
             }}
           >
             <div>
