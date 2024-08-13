@@ -11,6 +11,10 @@ export default function PageTitle({ text }) {
         borderRadius: "10px",
         width: "fit-content",
         alignSelf: "center",
+        userSelect: "none",
+        msUserSelect: "none",
+        MozUserSelect: "none",
+        WebkitUserSelect: "none",
       }}
     >
       {text}
