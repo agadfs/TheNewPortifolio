@@ -308,7 +308,7 @@ const PacMan = ({ isMobile }) => {
         height: "500px",
         marginBottom: "5%",
         backgroundColor: "#000", 
-        marginTop: "-30%",
+        marginTop: isMobile ? "-30%" : "0%",
       }}
     >
       <div
