@@ -13,11 +13,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <AppProvider>
-    <html lang="en">
-      <body className={inter.className}>
+      <html lang="en">
+        <head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=0.5, maximum-scale=1.0, user-scalable=no"
+          />
+        </head>
+        <body className={inter.className}>
           <div>
             <HeaderPc1
-              
               texts={["Home", "Skills", "Projects", "About"]}
               links={["", "skills", "projects", "about"]}
               colorBorder={"#031211"}
@@ -29,12 +34,11 @@ export default function RootLayout({ children }) {
                 "My latests projects",
                 "A bit of my story",
               ]}
-              />
-              
+            />
           </div>
-          {children} 
-      </body>
-    </html>
+          {children}
+        </body>
+      </html>
     </AppProvider>
   );
 }
