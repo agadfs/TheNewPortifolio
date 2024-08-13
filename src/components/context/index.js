@@ -8,25 +8,30 @@ export const AppProvider = ({ children }) => {
     mobile: false,
   });
 
-  const handleResize = () => {
-    const isMobile = window.innerWidth < 1000;
-    console.log(window.innerWidth);
-    setState((prevState) => ({
-      ...prevState,
-      mobile: isMobile,
-    }));
-  };
-
-  // create an event listener
-  useEffect(() => {
-    handleResize(); // Check size on initial load
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup on unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
+  if (typeof window !== "undefined") {
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 1000;
+      console.log(window.innerWidth);
+      setState((prevState) => ({
+        ...prevState,
+        mobile: isMobile,
+      }));
     };
-  }, []); // Empty array as dependency to run this effect only once
+  
+    // create an event listener
+    useEffect(() => {
+      
+      handleResize(); // Check size on initial load
+      window.addEventListener("resize", handleResize);
+  
+      // Cleanup on unmount
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, []); // Empty array as dependency to run this effect only once
+  }
+
+  
 
   return (
     <AppContext.Provider value={{ state, setState }}>
