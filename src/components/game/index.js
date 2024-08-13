@@ -209,7 +209,7 @@ const PacMan = ({ isMobile }) => {
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"ABOUT ME"}
-                fontSizeVw={"50"}
+                fontSizeVw={"55"}
               />
             </div>
           </div>
@@ -238,7 +238,7 @@ const PacMan = ({ isMobile }) => {
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"PROJECTS"}
-                fontSizeVw={"50"}
+                fontSizeVw={"55"}
               />
             </div>
           </div>
@@ -267,7 +267,7 @@ const PacMan = ({ isMobile }) => {
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"SKILLS"}
-                fontSizeVw={"50"}
+                fontSizeVw={"55"}
               />
             </div>
           </div>
@@ -296,7 +296,7 @@ const PacMan = ({ isMobile }) => {
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"CONTACT"}
-                fontSizeVw={"50"}
+                fontSizeVw={"55"}
               />
             </div>
           </div>
