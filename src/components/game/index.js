@@ -145,7 +145,10 @@ const PacMan = ({isMobile}) => {
       window.removeEventListener("keyup", handleKeyUp);
     };
   }, []);
-  const scaleFactor = window.innerWidth / 1000;
+  let scaleFactor = 1;
+  if (typeof window !== "undefined") {
+    scaleFactor = window.innerWidth / 1000;
+  }
   const renderWalls = () => {
     return map.map((row, rowIndex) =>
       row.map((cell, colIndex) =>
