@@ -147,7 +147,8 @@ const PacMan = ({isMobile}) => {
   }, []);
   let scaleFactor = 1;
   if (typeof window !== "undefined") {
-    scaleFactor = window.innerWidth / 1000;
+    scaleFactor = window.innerWidth / 1670;
+    console.log(scaleFactor)
   }
   const renderWalls = () => {
     return map.map((row, rowIndex) =>
