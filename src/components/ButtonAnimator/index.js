@@ -16,7 +16,7 @@ export default function ButtonTextAnimator({ text, backgroundColor, fontSizeVw }
     <div
     className={styles.animatecharcter}
       style={{
-        fontSize: fontSizeVw? `${fontSizeVw}vw` : "3vh",
+        fontSize: fontSizeVw? `${fontSizeVw}px` : "3vh",
         backgroundColor: backgroundColor,
         display: "inline-block", 
       }}
