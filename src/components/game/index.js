@@ -77,7 +77,7 @@ const PacMan = ({ isMobile }) => {
   const handleButtonPress = (key) => {
     handleKeyDown({ key }); // Simula o pressionamento da tecla
   };
-
+  
   const handleButtonRelease = (key) => {
     handleKeyUp({ key }); // Simula o soltar da tecla
   };
@@ -142,18 +142,24 @@ const PacMan = ({ isMobile }) => {
 
     return () => clearInterval(moveInterval);
   }, [moving]);
-  const [scaleFactor, setScaleFactor] = useState(0.3);
-  
+  const [scaleFactor, setScaleFactor] = useState(1);
   useEffect(() => {
-    const updateScaleFactor = () => {
-      const windowWidth = window.innerWidth;
-      const scale = windowWidth < 1000 ? windowWidth / 1600 : 1;
-      setScaleFactor(scale);
-    };
-  
-    updateScaleFactor();
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
+    const updateScaleFactor = () => {
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+  
+      // Calcula o fator de escala com base na menor dimensão disponível (largura ou altura)
+      const widthScale = windowWidth / 1600;
+      const heightScale = windowHeight / 500;
+  
+      // Usamos o menor fator para garantir que a div caiba na tela
+      const scale = Math.min(widthScale, heightScale);
+      setScaleFactor(scale);
+    };
+    updateScaleFactor();
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
@@ -309,15 +315,13 @@ const PacMan = ({ isMobile }) => {
   return (
     <div
       style={{
-        transform: `scale(${scaleFactor})`,
-        transformOrigin: "center",
+        scale: isMobile ? `${scaleFactor}` : "1",
         alignSelf: "center",
         position: "relative",
         width: "1000px",
         height: "500px",
         marginBottom: "5%",
-        backgroundColor: "#000", 
-        marginTop: isMobile ? "-10vh" : "0%",
+        backgroundColor: "#000",
       }}
     >
       <div
@@ -399,7 +403,7 @@ const PacMan = ({ isMobile }) => {
               flexDirection: "column",
               alignContent: "center",
               alignItems: "center",
-              scale: scaleFactor * 4,
+              scale: scaleFactor * 6,
               gap: "10px",
             }}
           >
