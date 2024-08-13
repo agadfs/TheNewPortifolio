@@ -405,7 +405,7 @@ const PacMan = ({ isMobile }) => {
               flexDirection: "column",
               alignContent: "center",
               alignItems: "center",
-              scale: 2,
+              scale: 3,
               gap: "10px",
             }}
           >
