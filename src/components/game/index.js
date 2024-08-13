@@ -142,8 +142,16 @@ const PacMan = ({ isMobile }) => {
 
     return () => clearInterval(moveInterval);
   }, [moving]);
-  let scaleFactor = 0.4;
+  const [scaleFactor, setScaleFactor] = useState(0.3);
+  
   useEffect(() => {
+    const updateScaleFactor = () => {
+      const windowWidth = window.innerWidth;
+      const scale = windowWidth < 1000 ? windowWidth / 1600 : 1;
+      setScaleFactor(scale);
+    };
+  
+    updateScaleFactor();
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
     return () => {
@@ -301,7 +309,8 @@ const PacMan = ({ isMobile }) => {
   return (
     <div
       style={{
-        scale: isMobile ? `${scaleFactor}` : "1",
+        transform: `scale(${scaleFactor})`,
+        transformOrigin: "center",
         alignSelf: "center",
         position: "relative",
         width: "1000px",
@@ -390,7 +399,7 @@ const PacMan = ({ isMobile }) => {
               flexDirection: "column",
               alignContent: "center",
               alignItems: "center",
-              scale: scaleFactor * 6,
+              scale: scaleFactor * 4,
               gap: "10px",
             }}
           >
