@@ -179,7 +179,9 @@ const PacMan = ({ isMobile }) => {
               left: `${colIndex * 50}px`,
               width: "50px",
               height: "50px",
-              backgroundColor: "blue",
+              backgroundColor: "black",
+              borderRadius: "0px",
+              border: "2px solid blue",
             }}
           />
         ) : cell === 2 ? (
