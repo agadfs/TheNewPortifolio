@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
-export default function ButtonTextAnimator({ text, backgroundColor }) {
+export default function ButtonTextAnimator({ text, backgroundColor, fontSizeVw }) {
   const [wordAnimated, setWordAnimated] = useState(0);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function ButtonTextAnimator({ text, backgroundColor }) {
     <div
     className={styles.animatecharcter}
       style={{
-        fontSize: "3vh",
+        fontSize: fontSizeVw? `${fontSizeVw}vw` : "3vh",
         backgroundColor: backgroundColor,
         display: "inline-block", 
       }}

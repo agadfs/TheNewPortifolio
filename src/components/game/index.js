@@ -5,7 +5,7 @@ import Button1 from "../buttonPc";
 import PageTitle from "../PageTitle";
 
 const PacMan = ({ isMobile }) => {
-  const [position, setPosition] = useState({ top: 50, left: 50 });
+  const [position, setPosition] = useState({ top: 200, left: 400 });
   const [direction, setDirection] = useState("right");
   const [moving, setMoving] = useState(false);
   const [mouthOpen, setMouthOpen] = useState(true);
@@ -209,6 +209,7 @@ const PacMan = ({ isMobile }) => {
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"ABOUT ME"}
+                fontSizeVw={"12"}
               />
             </div>
           </div>
@@ -237,6 +238,7 @@ const PacMan = ({ isMobile }) => {
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"PROJECTS"}
+                fontSizeVw={"12"}
               />
             </div>
           </div>
@@ -257,7 +259,7 @@ const PacMan = ({ isMobile }) => {
               style={{
                 position: "relative",
                 bottom: 50,
-                right: 20,
+                right: 50,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
               }}
@@ -265,6 +267,7 @@ const PacMan = ({ isMobile }) => {
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"SKILLS"}
+                fontSizeVw={"12"}
               />
             </div>
           </div>
@@ -284,8 +287,8 @@ const PacMan = ({ isMobile }) => {
             <div
               style={{
                 position: "relative",
-                top: 120,
-                left: -90,
+                top: 110,
+                left: -150,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
               }}
@@ -293,6 +296,7 @@ const PacMan = ({ isMobile }) => {
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"CONTACT"}
+                fontSizeVw={"12"}
               />
             </div>
           </div>
@@ -331,9 +335,10 @@ const PacMan = ({ isMobile }) => {
       <div
         style={{
           position: "absolute",
-          left: "70%",
-          top: "-10%",
-          fontSize: "30px",
+          textAlign: "center",
+          width: "100%",
+          top: "-15%",
+          fontSize: "40px",
           color: "rgb(255, 255, 0)",
         }}
       >
@@ -398,7 +403,7 @@ const PacMan = ({ isMobile }) => {
             width: "100%",
             position: "absolute",
             zIndex: 50,
-            bottom: "-40%",
+            bottom: "-70%",
           }}
         >
           <div
@@ -407,7 +412,7 @@ const PacMan = ({ isMobile }) => {
               flexDirection: "column",
               alignContent: "center",
               alignItems: "center",
-              scale: 3,
+              scale: 4,
               gap: "10px",
             }}
           >
