@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from "react";
 import ButtonTextAnimator from "../ButtonAnimator";
 import Button1 from "../buttonPc";
+import PageTitle from "../PageTitle";
 
-const PacMan = ({isMobile}) => {
+const PacMan = ({ isMobile }) => {
   const [position, setPosition] = useState({ top: 50, left: 50 });
   const [direction, setDirection] = useState("right");
   const [moving, setMoving] = useState(false);
@@ -16,7 +17,7 @@ const PacMan = ({isMobile}) => {
       } else {
         setMouthOpen(true);
       }
-    }, 200); 
+    }, 200);
 
     return () => clearInterval(mouthInterval);
   }, [moving]);
@@ -73,7 +74,13 @@ const PacMan = ({isMobile}) => {
         break;
     }
   };
+  const handleButtonPress = (key) => {
+    handleKeyDown({ key }); // Simula o pressionamento da tecla
+  };
 
+  const handleButtonRelease = (key) => {
+    handleKeyUp({ key }); // Simula o soltar da tecla
+  };
   useEffect(() => {
     const moveInterval = setInterval(() => {
       if (moving) {
@@ -114,7 +121,7 @@ const PacMan = ({isMobile}) => {
             newMap[rowIndex][colIndex] = 0;
             setMap(newMap);
           }
-          
+
           if (newTop === 400 && newLeft === 950) {
             window.location.href = "/contact";
           }
@@ -131,25 +138,20 @@ const PacMan = ({isMobile}) => {
           return { top: newTop, left: newLeft };
         });
       }
-    }, 200); 
+    }, 200);
 
     return () => clearInterval(moveInterval);
   }, [moving]);
-
+  let scaleFactor = 0.4;
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
-
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
   }, []);
-  let scaleFactor = 1;
-  if (typeof window !== "undefined") {
-    scaleFactor = window.innerWidth / 1800;
-    console.log(scaleFactor)
-  }
+
   const renderWalls = () => {
     return map.map((row, rowIndex) =>
       row.map((cell, colIndex) =>
@@ -182,7 +184,7 @@ const PacMan = ({isMobile}) => {
               style={{
                 position: "relative",
                 bottom: 50,
-                right:30,
+                right: 30,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
               }}
@@ -210,7 +212,7 @@ const PacMan = ({isMobile}) => {
               style={{
                 position: "relative",
                 top: 60,
-                right:30,
+                right: 30,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
               }}
@@ -221,8 +223,7 @@ const PacMan = ({isMobile}) => {
               />
             </div>
           </div>
-        )
-        : cell === 4 ? (
+        ) : cell === 4 ? (
           <div
             key={`${rowIndex}-${colIndex}`}
             style={{
@@ -239,7 +240,7 @@ const PacMan = ({isMobile}) => {
               style={{
                 position: "relative",
                 bottom: 50,
-                right:20,
+                right: 20,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
               }}
@@ -250,7 +251,7 @@ const PacMan = ({isMobile}) => {
               />
             </div>
           </div>
-        ): cell === 5 ? (
+        ) : cell === 5 ? (
           <div
             key={`${rowIndex}-${colIndex}`}
             style={{
@@ -267,7 +268,7 @@ const PacMan = ({isMobile}) => {
               style={{
                 position: "relative",
                 top: 120,
-                left:-90,
+                left: -90,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
               }}
@@ -278,8 +279,7 @@ const PacMan = ({isMobile}) => {
               />
             </div>
           </div>
-        )
-        : cell === 6 ? (
+        ) : cell === 6 ? (
           <div
             key={`${rowIndex}-${colIndex}`}
             style={{
@@ -293,29 +293,35 @@ const PacMan = ({isMobile}) => {
               backgroundColor: "#FFFF00",
               filter: "drop-shadow(0 0 10px rgba(255, 255, 0, 0.8))",
             }}
-          >
-          </div>
-        )
-        : null
+          ></div>
+        ) : null
       )
     );
   };
   return (
     <div
       style={{
-        scale: isMobile ? `${scaleFactor}`: "1",
+        scale: isMobile ? `${scaleFactor}` : "1",
         alignSelf: "center",
         position: "relative",
-        width: "1000px", 
-        height: "500px", 
+        width: "1000px",
+        height: "500px",
         marginBottom: "5%",
         backgroundColor: "#000",
       }}
     >
-      <div style={{position:"absolute", left:"70%", top:"-10%", fontSize:"30px", color:"rgb(255, 255, 0)"}} >
+      <div
+        style={{
+          position: "absolute",
+          left: "70%",
+          top: "-10%",
+          fontSize: "30px",
+          color: "rgb(255, 255, 0)",
+        }}
+      >
         SCORE : {points}
       </div>
-      
+
       {renderWalls()}
       <div
         style={{
@@ -367,6 +373,57 @@ const PacMan = ({isMobile}) => {
           />
         )}
       </div>
+      {isMobile && (
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            position: "absolute",
+            zIndex: 50,
+            bottom: "-40%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "center",
+              alignItems: "center",
+              scale: scaleFactor * 6,
+              gap: "10px",
+            }}
+          >
+            <div>
+              <div
+                onTouchStart={() => handleButtonPress("w")}
+                onTouchEnd={() => handleButtonRelease("w")}
+              >
+                <PageTitle text={"W"} />
+              </div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+              <div
+                onTouchStart={() => handleButtonPress("a")}
+                onTouchEnd={() => handleButtonRelease("a")}
+              >
+                <PageTitle text={"A"} />
+              </div>
+              <div
+                onTouchStart={() => handleButtonPress("s")}
+                onTouchEnd={() => handleButtonRelease("s")}
+              >
+                <PageTitle text={"S"} />
+              </div>
+              <div
+                onTouchStart={() => handleButtonPress("d")}
+                onTouchEnd={() => handleButtonRelease("d")}
+              >
+                <PageTitle text={"D"} />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
