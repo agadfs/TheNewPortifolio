@@ -4,5 +4,5 @@
     box-sizing: border-box;
     background-color: #0B0C10;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    max-height: 85vh;
+    justify-content: center;
   }

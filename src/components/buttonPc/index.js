@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ButtonTextAnimator from "../ButtonAnimator";
 
 export default function Button1({
   link,
@@ -9,6 +10,7 @@ export default function Button1({
   colorBorder,
   colorText,
   colorBackground,
+  size
 }) {
   const handleClick = () => {
     if (link) {
@@ -21,10 +23,10 @@ export default function Button1({
       className={`button ${isHovered ? "hovered" : ""}`}
       style={{
         border: `2px solid ${colorBorder}`,
-        width: !isHovered
-          ? `${12 * text.length}px`
-          : `${12 * textOnHover.length}px`,
+        width: size ? `${size}px`: "fit-content",
         padding: "20px",
+        textAlign: "center",
+        justifyContent: "center",
         fontWeight: "500",
         fontSize: "20px",
         textWrap: "nowrap",
@@ -42,7 +44,7 @@ export default function Button1({
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
     >
-      <div>{!isHovered ? text : textOnHover}</div>
+      {!isHovered ? <ButtonTextAnimator backgroundColor={colorBackground} text={text} /> : <ButtonTextAnimator text={textOnHover} backgroundColor={colorBorder} />}
     </div>
   );
 }
