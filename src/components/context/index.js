@@ -11,7 +11,6 @@ export const AppProvider = ({ children }) => {
   if (typeof window !== "undefined") {
     const handleResize = () => {
       const isMobile = window.innerWidth < 1000;
-      console.log(window.innerWidth);
       setState((prevState) => ({
         ...prevState,
         mobile: isMobile,
