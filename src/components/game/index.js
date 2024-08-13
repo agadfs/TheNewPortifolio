@@ -318,7 +318,8 @@ const PacMan = ({ isMobile }) => {
       style={{
         scale: isMobile ? `${scaleFactor}` : "1",
         alignSelf: "center",
-        position: "relative",
+        position: "absolute",
+        top: "5vh",
         width: "1000px",
         height: "500px",
         marginBottom: "5%",
