@@ -325,7 +325,7 @@ const PacMan = ({ isMobile }) => {
         scale: isMobile ? `${scaleFactor}` : "1",
         alignSelf: "center",
         position: "relative",
-        bottom: isMobile ? "15vh" : "0vh",
+        bottom: isMobile ? "15vh" : "-5vh",
         width: "1000px",
         height: "500px",
         marginBottom: "5%",
