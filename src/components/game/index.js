@@ -150,16 +150,17 @@ const PacMan = ({ isMobile }) => {
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;
   
-      // Calcula o fator de escala com base na menor dimensão disponível (largura ou altura)
-      const widthScale = windowWidth / 1600;
+      
+      const widthScale = windowWidth / 1900;
       const heightScale = windowHeight / 500;
   
-      // Usamos o menor fator para garantir que a div caiba na tela
+      
       const scale = Math.min(widthScale, heightScale);
+      
       setScaleFactor(scale);
     };
     updateScaleFactor();
-
+    window.addEventListener("resize", updateScaleFactor);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
@@ -403,7 +404,7 @@ const PacMan = ({ isMobile }) => {
               flexDirection: "column",
               alignContent: "center",
               alignItems: "center",
-              scale: scaleFactor * 6,
+              scale: 2,
               gap: "10px",
             }}
           >
