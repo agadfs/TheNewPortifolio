@@ -151,7 +151,7 @@ const PacMan = ({ isMobile }) => {
       const windowHeight = window.innerHeight;
   
       
-      const widthScale = windowWidth / 1900;
+      const widthScale = windowWidth / 2200;
       const heightScale = windowHeight / 500;
   
       
@@ -200,16 +200,17 @@ const PacMan = ({ isMobile }) => {
             <div
               style={{
                 position: "relative",
-                bottom: 60,
+                bottom: 70,
                 right: 30,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
+                scale: isMobile ? 0.3/scaleFactor : 1,
               }}
             >
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"ABOUT ME"}
-                fontSizeVw={"55"}
+                fontSizeVw={isMobile ? `${200*scaleFactor}` : "55"}
               />
             </div>
           </div>
@@ -233,12 +234,13 @@ const PacMan = ({ isMobile }) => {
                 right: 30,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
+                scale: isMobile ? 0.3/scaleFactor : 1,
               }}
             >
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"PROJECTS"}
-                fontSizeVw={"55"}
+                fontSizeVw={isMobile ? `${200*scaleFactor}` : "55"}
               />
             </div>
           </div>
@@ -258,16 +260,17 @@ const PacMan = ({ isMobile }) => {
             <div
               style={{
                 position: "relative",
-                bottom: 60,
+                bottom: 70,
                 right: 50,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
+                scale: isMobile ? 0.3/scaleFactor : 1,
               }}
             >
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"SKILLS"}
-                fontSizeVw={"55"}
+                fontSizeVw={isMobile ? `${200*scaleFactor}` : "55"}
               />
             </div>
           </div>
@@ -288,15 +291,16 @@ const PacMan = ({ isMobile }) => {
               style={{
                 position: "relative",
                 top: 110,
-                left: -150,
+                left: -200,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
+                scale: isMobile ? 0.3/scaleFactor : 1,
               }}
             >
               <ButtonTextAnimator
                 backgroundColor={"rgba(102, 252, 241)"}
                 text={"CONTACT"}
-                fontSizeVw={"55"}
+                fontSizeVw={isMobile ? `${200*scaleFactor}` : "55"}
               />
             </div>
           </div>
