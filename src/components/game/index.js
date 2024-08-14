@@ -156,11 +156,13 @@ const PacMan = ({ isMobile }) => {
   
       
       const scale = Math.min(widthScale, heightScale);
-      
+      console.log("scale changed: ", scale)
+      console.log("width used: ", windowWidth)
+      console.log("height used: ", windowHeight)
       setScaleFactor(scale);
     };
     updateScaleFactor();
-    window.addEventListener("resize", updateScaleFactor);
+    
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
