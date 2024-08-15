@@ -69,13 +69,13 @@ export default function PacManRunningOnText({
           pacmanY += lineHeight*0.38;
         }
         if(textRef.current.clientWidth <=768 && textRef.current.clientWidth > 425){
-          pacmanY += lineHeight*0.56;
+          pacmanY += lineHeight*0.54;
         }
         if(textRef.current.clientWidth <=1024 && textRef.current.clientWidth > 768){
           pacmanY += lineHeight*0.61;
         }
         if(textRef.current.clientWidth <=1440 && textRef.current.clientWidth > 1024){
-          pacmanY += lineHeight*0.644;
+          pacmanY += lineHeight*0.624;
         }
         if(textRef.current.clientWidth > 1440){
           pacmanY += lineHeight*0.644;
@@ -95,7 +95,7 @@ export default function PacManRunningOnText({
         setIsPacmanVisible(false); // Hide Pac-Man
         clearInterval(intervalId);
       }
-    }, 200 / updatesPerSecond);
+    }, 400 / updatesPerSecond);
 
     return () => clearInterval(intervalId);
   }, [textToRunOn, lineHeight]);
