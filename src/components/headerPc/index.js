@@ -74,15 +74,15 @@ export default function HeaderPc1({
               width: "100%",
               justifyContent: "center",
               flexDirection: "column",
-              backgroundColor: "rgb(15, 15, 15, 0.1)",
-              padding: "20px",
+              backgroundColor: "rgb(15, 15, 15, 1)",
+              padding: "0px",
               borderEndEndRadius: "30px",
               borderEndStartRadius: "30px",
               alignItems: "center",
               gap: "1vh",
               position: "absolute",
               zIndex: "100",
-              right: !openMenu ? "100%" : "0%",
+              right: !openMenu ? "110%" : "0%",
               transition: "all 0.5s ease-in-out",
             }}
           >
@@ -96,7 +96,7 @@ export default function HeaderPc1({
                   className={`button ${isHovered ? "hovered" : ""}`}
                   style={{
                     border: `2px solid ${colorBorder}`,
-                    width: !isHovered ? `${100}%` : `${100}%`,
+                    width: !isHovered ? `${80}%` : `${80}%`,
                     minWidth: "180px",
                     textAlign: "center",
                     padding: "20px",

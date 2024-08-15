@@ -410,6 +410,7 @@ const PacMan = ({ isMobile }) => {
             position: "absolute",
             zIndex: 50,
             bottom: "-70%",
+            justifyContent: "center",
           }}
         >
           <div

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./pacman.module.css";
 
 export default function PacManRunningOnText({
@@ -7,61 +7,116 @@ export default function PacManRunningOnText({
   textType,
   textColor,
 }) {
+  const [displayedText, setDisplayedText] = useState("");
+  const [pacmanPosition, setPacmanPosition] = useState({ x: 0, y: 0 });
+  const [lineHeight, setLineHeight] = useState(0);
+  const [isPacmanVisible, setIsPacmanVisible] = useState(true); // Track Pac-Man visibility
   const textRef = useRef(null);
-  const pacmanRef = useRef(null);
+
+  const calculateLineHeight = () => {
+    const screenWidth = window.innerWidth;
+    const fontSizeInPx = screenWidth * 0.02;
+    console.log(fontSizeInPx) // 2vw in pixels
+    return fontSizeInPx; // Assume line-height is 1.2 times the font size
+  };
 
   useEffect(() => {
-    const textElement = textRef.current;
-    const pacmanElement = pacmanRef.current;
-    const textWidth = textElement.clientWidth;
-    const animationDuration = 2000; // Duração da animação em milissegundos
+    const updateLineHeight = () => {
+      setLineHeight(calculateLineHeight());
+    };
 
-    textElement.style.visibility = "visible"; // Faz o texto ficar visível
-    textElement.style.color = "transparent"; // Inicialmente, o texto é transparente
+    updateLineHeight(); // Initial calculation
+    window.addEventListener("resize", updateLineHeight); // Recalculate on resize
 
-    let startTime = null;
+    return () => window.removeEventListener("resize", updateLineHeight);
+  }, []);
 
-    const movePacman = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = timestamp - startTime;
+  useEffect(() => {
+    if (!lineHeight) return; // Wait for lineHeight to be calculated
 
-      const pacmanX = Math.min((progress / animationDuration) * textWidth, textWidth);
-      pacmanElement.style.transform = `translateX(${pacmanX}px)`;
+    let currentIndex = 0;
+    let pacmanX = 0;
+    let pacmanY = 0;
+    const screenWidth = window.innerWidth;
+    const speedPerSecond = screenWidth * 0.59;
+    const updatesPerSecond = 60;
+    const distancePerUpdate = speedPerSecond / updatesPerSecond;
 
-      const visibleChars = Math.floor((pacmanX / textWidth) * textToRunOn.length);
+    const intervalId = setInterval(() => {
+      const currentChar = textToRunOn[currentIndex];
+      setDisplayedText((prev) => prev + currentChar);
 
-      // Revela apenas os caracteres que o Pac-Man já passou
-      const visibleText = textToRunOn.slice(0, visibleChars);
-      const hiddenText = textToRunOn.slice(visibleChars);
-
-      textElement.innerHTML = `<span style="color: ${textColor || 'white'}">${visibleText}</span><span style="color: transparent">${hiddenText}</span>`;
-
-      if (pacmanX < textWidth) {
-        requestAnimationFrame(movePacman);
-      } else {
-        pacmanElement.style.transition = "opacity 0.5s ease-out";
-        pacmanElement.style.opacity = 0; // Faz o Pac-Man desaparecer
+      if (
+        currentChar === " " &&
+        pacmanX + distancePerUpdate >= textRef.current.clientWidth
+      ) {
+        currentIndex++;
+        return;
       }
-    };
 
-    requestAnimationFrame(movePacman);
+      if (
+        currentChar === "\n" ||
+        pacmanX + distancePerUpdate >= textRef.current.clientWidth
+      ) {
+        pacmanX = 0;
+        if(textRef.current.clientWidth <=320){
+          pacmanY += lineHeight*0.32;
+        }
+        if(textRef.current.clientWidth <=375 && textRef.current.clientWidth > 320){
+          pacmanY += lineHeight*0.35;
+        }
+        if(textRef.current.clientWidth <=425 && textRef.current.clientWidth > 375){
+          pacmanY += lineHeight*0.38;
+        }
+        if(textRef.current.clientWidth <=768 && textRef.current.clientWidth > 425){
+          pacmanY += lineHeight*0.56;
+        }
+        if(textRef.current.clientWidth <=1024 && textRef.current.clientWidth > 768){
+          pacmanY += lineHeight*0.61;
+        }
+        if(textRef.current.clientWidth <=1440 && textRef.current.clientWidth > 1024){
+          pacmanY += lineHeight*0.644;
+        }
+        if(textRef.current.clientWidth > 1440){
+          pacmanY += lineHeight*0.644;
+        }
+        
+        
+      } else {
+        pacmanX += distancePerUpdate;
+      }
 
-    return () => {
-      pacmanElement.style.transform = "translateX(0)"; // Reseta a posição do Pac-Man ao desmontar o componente
-      pacmanElement.style.opacity = 1; // Reseta a opacidade ao desmontar o componente
-    };
-  }, [textToRunOn, textColor]);
+      setPacmanPosition({ x: pacmanX, y: pacmanY });
+
+      currentIndex++;
+
+      // Check if the entire text has been displayed
+      if (currentIndex + 1 >= textToRunOn.length) {
+        setIsPacmanVisible(false); // Hide Pac-Man
+        clearInterval(intervalId);
+      }
+    }, 200 / updatesPerSecond);
+
+    return () => clearInterval(intervalId);
+  }, [textToRunOn, lineHeight]);
 
   return (
     <div className={styles.container}>
-      <div className={styles.pacmanbody} ref={pacmanRef}>
-        <div className={styles.pacman}>
-          <div className={styles.mouth}></div>
+      {isPacmanVisible && ( // Conditionally render Pac-Man
+        <div
+          className={styles.pacmanbody}
+          style={{
+            transform: `translate(${pacmanPosition.x}px, ${pacmanPosition.y}px)`,
+          }}
+        >
+          <div className={styles.pacman}>
+            <div className={styles.mouth}></div>
+          </div>
+          <div className={styles.eye}></div>
         </div>
-        <div className={styles.eye}></div>
-      </div>
-      <div className={styles.text} ref={textRef}>
-        {textToRunOn}
+      )}
+      <div ref={textRef} className={styles.text} style={{ color: textColor }}>
+        {displayedText}
       </div>
     </div>
   );
