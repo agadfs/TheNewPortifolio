@@ -60,10 +60,10 @@ export default function PacManRunningOnText({
       ) {
         pacmanX = 0;
         if(textRef.current.clientWidth <=320){
-          pacmanY += lineHeight*0.32;
+          pacmanY += lineHeight*0.55;
         }
         if(textRef.current.clientWidth <=375 && textRef.current.clientWidth > 320){
-          pacmanY += lineHeight*0.35;
+          pacmanY += lineHeight*0.65;
         }
         if(textRef.current.clientWidth <=425 && textRef.current.clientWidth > 375){
           pacmanY += lineHeight*0.38;
