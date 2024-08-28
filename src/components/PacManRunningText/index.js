@@ -11,8 +11,8 @@ export default function PacManRunningOnText({
   const [pacManStartReset, setPacManStartReset] = useState(-200);
   const [totalAmountOfLines, setTotalAmountOfLines] = useState(0);
   const [stopPacman, setStopPacman] = useState(false);
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenHeight, setScreenHeight] = useState();
+  const [screenWidth, setScreenWidth] = useState();
   const [textHeight, setTextHeight] = useState(0);
   const textRef = useRef(null);
 
