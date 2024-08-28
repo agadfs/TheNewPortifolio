@@ -7,116 +7,112 @@ export default function PacManRunningOnText({
   textType,
   textColor,
 }) {
-  const [displayedText, setDisplayedText] = useState("");
-  const [pacmanPosition, setPacmanPosition] = useState({ x: 0, y: 0 });
-  const [lineHeight, setLineHeight] = useState(0);
-  const [isPacmanVisible, setIsPacmanVisible] = useState(true); // Track Pac-Man visibility
+  const [pacManCurrentLine, setPacManCurrentLine] = useState(0);
+  const [pacManStartReset, setPacManStartReset] = useState(-200);
+  const [totalAmountOfLines, setTotalAmountOfLines] = useState(0);
+  const [stopPacman, setStopPacman] = useState(false);
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [textHeight, setTextHeight] = useState(0);
   const textRef = useRef(null);
 
-  const calculateLineHeight = () => {
-    const screenWidth = window.innerWidth;
-    const fontSizeInPx = screenWidth * 0.02;
-    console.log(fontSizeInPx) // 2vw in pixels
-    return fontSizeInPx; // Assume line-height is 1.2 times the font size
-  };
-
   useEffect(() => {
-    const updateLineHeight = () => {
-      setLineHeight(calculateLineHeight());
+    const handleResize = () => {
+      const textHeight = textRef.current.scrollHeight;
+      const lineHeightPx = screenHeight * 0.02; // 2vh in pixels
+      const totalAmountOfLines = Math.ceil(textHeight / lineHeightPx - 3);
+      setTextHeight(textHeight);
+      setTotalAmountOfLines(totalAmountOfLines);
     };
 
-    updateLineHeight(); // Initial calculation
-    window.addEventListener("resize", updateLineHeight); // Recalculate on resize
+    window.addEventListener("resize", handleResize);
+    if (textRef.current) {
+      handleResize();
+    }
 
-    return () => window.removeEventListener("resize", updateLineHeight);
-  }, []);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [screenHeight]);
 
   useEffect(() => {
-    if (!lineHeight) return; // Wait for lineHeight to be calculated
+    if (!stopPacman) {
+      setPacManStartReset(200);
+      const interval = setInterval(() => {
+        setPacManCurrentLine((pacManCurrentLine) => {
+          if (pacManCurrentLine < totalAmountOfLines - 1) {
+            return pacManCurrentLine + 1;
+          } else {
+            setStopPacman(true);
+            return 0;
+          }
+        });
+      }, screenWidth / 2);
 
-    let currentIndex = 0;
-    let pacmanX = 0;
-    let pacmanY = 0;
-    const screenWidth = window.innerWidth;
-    const speedPerSecond = screenWidth * 0.59;
-    const updatesPerSecond = 60;
-    const distancePerUpdate = speedPerSecond / updatesPerSecond;
-
-    const intervalId = setInterval(() => {
-      const currentChar = textToRunOn[currentIndex];
-      setDisplayedText((prev) => prev + currentChar);
-
-      if (
-        currentChar === " " &&
-        pacmanX + distancePerUpdate >= textRef.current.clientWidth
-      ) {
-        currentIndex++;
-        return;
-      }
-
-      if (
-        currentChar === "\n" ||
-        pacmanX + distancePerUpdate >= textRef.current.clientWidth
-      ) {
-        pacmanX = 0;
-        if(textRef.current.clientWidth <=320){
-          pacmanY += lineHeight*0.55;
-        }
-        if(textRef.current.clientWidth <=375 && textRef.current.clientWidth > 320){
-          pacmanY += lineHeight*0.65;
-        }
-        if(textRef.current.clientWidth <=425 && textRef.current.clientWidth > 375){
-          pacmanY += lineHeight*0.38;
-        }
-        if(textRef.current.clientWidth <=768 && textRef.current.clientWidth > 425){
-          pacmanY += lineHeight*0.54;
-        }
-        if(textRef.current.clientWidth <=1024 && textRef.current.clientWidth > 768){
-          pacmanY += lineHeight*0.61;
-        }
-        if(textRef.current.clientWidth <=1440 && textRef.current.clientWidth > 1024){
-          pacmanY += lineHeight*0.624;
-        }
-        if(textRef.current.clientWidth > 1440){
-          pacmanY += lineHeight*0.644;
-        }
-        
-        
-      } else {
-        pacmanX += distancePerUpdate;
-      }
-
-      setPacmanPosition({ x: pacmanX, y: pacmanY });
-
-      currentIndex++;
-
-      // Check if the entire text has been displayed
-      if (currentIndex + 1 >= textToRunOn.length) {
-        setIsPacmanVisible(false); // Hide Pac-Man
-        clearInterval(intervalId);
-      }
-    }, 400 / updatesPerSecond);
-
-    return () => clearInterval(intervalId);
-  }, [textToRunOn, lineHeight]);
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [totalAmountOfLines, screenWidth, stopPacman]);
 
   return (
     <div className={styles.container}>
-      {isPacmanVisible && ( // Conditionally render Pac-Man
+      <div
+        className={styles.text}
+        style={{ color: textColor, lineHeight: "2vh", fontSize: "2vh" }}
+        ref={textRef}
+      >
         <div
-          className={styles.pacmanbody}
           style={{
-            transform: `translate(${pacmanPosition.x}px, ${pacmanPosition.y}px)`,
+            left: `${pacManStartReset}%`,
+            position: "absolute",
+            top: "0%",
+            height: `${textHeight}px`,
+            width: `${textHeight}px`,
+            backgroundColor: "yellow",
+            borderRadius: "50%",
+            display: stopPacman ? "none" : "block",
+            transition: `left 4s linear`,
+            zIndex: 2,
           }}
         >
-          <div className={styles.pacman}>
-            <div className={styles.mouth}></div>
+          <div style={{ position: "absolute", top: 0, left: 0 }}>
+            <div className={styles.pacman}>
+              <div className={styles.pacmanbody}>
+                <div
+                  style={{
+                    height: `${textHeight}px`,
+                    width: `${textHeight}px`,
+                  }}
+                  className={styles.mouth}
+                ></div>
+              </div>
+            </div>
+            <div
+              className={styles.eye}
+              style={{
+                height: `${textHeight * 0.2}px`,
+                width: `${textHeight * 0.2}px`,
+              }}
+            ></div>
+            <div
+              className={styles.actualPacManBody}
+              style={{
+                height: `${textHeight}px`,
+                width: `${textHeight}px`,
+              }}
+            ></div>
+            <div
+              className={styles.texthider}
+              style={{
+                height: `${textHeight}px`,
+                width: `400vw`,
+                left: `${textHeight/2}px`,
+              }}
+            ></div>
           </div>
-          <div className={styles.eye}></div>
         </div>
-      )}
-      <div ref={textRef} className={styles.text} style={{ color: textColor }}>
-        {displayedText}
+        {textToRunOn}
       </div>
     </div>
   );

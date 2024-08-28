@@ -1,7 +1,6 @@
 .pacman {
-  width: 5vw;
-  height: 5vw;
-  overflow: hidden;
+  z-index: 5;
+  position: absolute;
   animation: pacman-animation 0.5s infinite;
 }
 
@@ -16,36 +15,58 @@
 }
 
 .mouth {
-  width: 5vw;
-  height: 5vw;
+
   background: black;
   border-radius: 50%;
   clip-path: polygon(50% 50%, 100% 0, 100% 100%);
+  z-index: 5;
+  position: relative;
 }
 
 .eye {
-  width: 1vw;
-  height: 1vw;
+
   background: black;
   border-radius: 50%;
+  z-index: 3;
+  top:15%;
+  left:30%;
   position: absolute;
-  top: 1vw; /* Adjust to correctly position the eye */
-  left: 1vw;
+
+
+
+}
+.texthider{
+  background: #0b0c10;
+
+  top:0%;
+  left:0%;
+  z-index: 1;
+  position: absolute;
 }
 
 .pacmanbody {
-  width: 5vw;
-  height: 5vw;
+
   background: yellow;
   border-radius: 50%;
-  position: absolute;
-  top: 0; /* Ensure top alignment */
-  left: 0;
-}
+  position: relative;
+  z-index: 5;
 
+}
+.actualPacManBody{
+  background: yellow;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+
+
+
+ 
+}
 .text {
-  font-size: 2vw;
+  font-size: 2vh;
   color: burlywood;
+  line-height: 2vh;
+ 
 }
 
 @keyframes pacman-animation {
