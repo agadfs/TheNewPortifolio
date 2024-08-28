@@ -1,16 +1,53 @@
+"use client";
 import PacManRunningOnText from "@/src/components/PacManRunningText";
 import PageTitle from "@/src/components/PageTitle";
+import { useState, useEffect, useRef } from "react";
 
 export default function AboutPage() {
+  const [textCounter, setTextCounter] = useState(0);
+  const textRefs = useRef([]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setTextCounter((prevCounter) => prevCounter + 1);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, [textCounter]);
+
+  useEffect(() => {
+    if (textRefs.current[textCounter]) {
+      textRefs.current[textCounter].scrollIntoView({ behavior: "smooth" });
+    }
+  }, [textCounter]);
+
   return (
-    <div style={{ display: "flex", justifyContent: "center", flexDirection:"column" }}>
+    <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
       <PageTitle text="About me" />
-      <PacManRunningOnText
-        textToRunOn={`
-        Some time ago, i have changed my undergraduation to computer science and i am seeking the opportunity to contribute to my professional development. Although I do not yet possess a higher education degree in the field, I am committed to seeking knowledge and continuous improvement. I plan to enroll in a higher education or technology course to strengthen my educational foundation and deepen my understanding of the challenges and opportunities inherent in this dynamic industry. I have knowledge in languages such as TypeScript, JavaScript, C++, and Python. My aim is to further specialize in the first two and develop my skills in them. In this same way, i believe I have the capability to perform well in the position, along with the determination to achieve goals and meet objectives. I am committed to balancing my professional responsibilities with academic studies, striving for a harmonious approach to succeed both in the workplace and in my ongoing pursuit of knowledge and expertise in programming.
-        `}
-        textColor={"white"}
-      />
+      {textCounter >= 0 && (
+        <div ref={(el) => (textRefs.current[0] = el)}>
+          <PacManRunningOnText
+            textToRunOn={`I started my academic career in Physics, drawn to understanding the fundamental principles that govern our universe. However, my passion took a new direction when I discovered the world of programming. Captivated by the power of coding to solve complex problems and build innovative solutions, I decided to pivot my studies to Computer Science. Throughout my journey, I've explored languages such as C++ and Python, laying a solid foundation in programming. But it was with JavaScript that I truly found my niche. Now, as a full-stack developer, I specialize in building responsive, user-centric applications, leveraging my skills in JavaScript to create seamless and dynamic user experiences.`}
+            textColor={"white"}
+          />
+        </div>
+      )}
+      {textCounter >= 1 && (
+        <div ref={(el) => (textRefs.current[1] = el)}>
+          <PacManRunningOnText
+            textToRunOn={`Over the years, my journey in technology has been deeply rooted in my love for JavaScript. This versatile language has been at the core of almost all my projects, enabling me to craft both client-side and server-side applications. From building interactive front-end interfaces with React and Next.js to developing robust back-end systems using Node.js, my expertise spans the entire stack. My projects range from integrating cryptocurrency wallets like MetaMask into web applications to developing complex e-commerce platforms with DatoCMS and Vercel. My ability to adapt and excel in diverse environments is a testament to my dedication and passion for continuous learning and innovation.`}
+            textColor={"white"}
+          />
+        </div>
+      )}
+      {textCounter >= 2 && (
+        <div ref={(el) => (textRefs.current[2] = el)}>
+          <PacManRunningOnText
+            textToRunOn={`As a full-stack developer, I am constantly inspired by the ever-evolving world of technology. My portfolio showcases a wide range of projects, all unified by one common thread: the power of JavaScript. Whether I'm creating web applications that interact with real-time data using GraphQL and APIs, or building intuitive and scalable user interfaces, JavaScript is my tool of choice. My recent work includes projects like the 'Appoint Me' platform, where I combined MongoDB, Next.js, and GraphQL to deliver a comprehensive, multilingual user experience. My commitment to mastering my craft drives me to explore new technologies, improve my skills, and stay ahead in this dynamic field.`}
+            textColor={"white"}
+          />
+        </div>
+      )}
     </div>
   );
 }
