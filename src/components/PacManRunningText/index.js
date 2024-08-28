@@ -7,61 +7,45 @@ export default function PacManRunningOnText({
   textType,
   textColor,
 }) {
-  const [pacManCurrentLine, setPacManCurrentLine] = useState(0);
+
   const [pacManStartReset, setPacManStartReset] = useState(-200);
   const [totalAmountOfLines, setTotalAmountOfLines] = useState(0);
   const [stopPacman, setStopPacman] = useState(false);
   const [screenHeight, setScreenHeight] = useState();
-  const [screenWidth, setScreenWidth] = useState();
   const [textHeight, setTextHeight] = useState(0);
   const textRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
-      setScreenHeight(window.innerHeight);
-      setScreenWidth(window.innerWidth);
-      const textHeight = textRef.current.scrollHeight;
-      const lineHeightPx = screenHeight * 0.02; // 2vh in pixels
-      const totalAmountOfLines = Math.ceil(textHeight / lineHeightPx - 3);
-      setTextHeight(textHeight);
-      setTotalAmountOfLines(totalAmountOfLines);
+      const screenHeight2 = window.screen.height;
+      const screenWidth2 = window.screen.width;
+      if (screenHeight2 && screenWidth2) {
+        setScreenHeight(screenHeight2);
+        setPacManStartReset(200);
+        const textHeight = textRef.current.scrollHeight;
+        const lineHeightPx = screenHeight * 0.02; 
+        const totalAmountOfLines = Math.ceil(textHeight / lineHeightPx - 3);
+        setTextHeight(textHeight);
+        setTotalAmountOfLines(totalAmountOfLines);
+      }
     };
 
     window.addEventListener("resize", handleResize);
-    if (textRef.current) {
-      handleResize();
-    }
+
+    handleResize();
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [screenHeight]);
 
-  useEffect(() => {
-    if (!stopPacman) {
-      setPacManStartReset(200);
-      const interval = setInterval(() => {
-        setPacManCurrentLine((pacManCurrentLine) => {
-          if (pacManCurrentLine < totalAmountOfLines - 1) {
-            return pacManCurrentLine + 1;
-          } else {
-            setStopPacman(true);
-            return 0;
-          }
-        });
-      }, screenWidth / 2);
-
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  }, [totalAmountOfLines, screenWidth, stopPacman]);
+  
 
   return (
     <div className={styles.container}>
       <div
         className={styles.text}
-        style={{ color: textColor, lineHeight: "2vh", fontSize: "2vh" }}
+        style={{ color: textColor, lineHeight: "2vh", fontSize: "2vh", padding:"5%" }}
         ref={textRef}
       >
         <div
