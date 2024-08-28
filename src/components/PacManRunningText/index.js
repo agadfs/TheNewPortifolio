@@ -18,6 +18,8 @@ export default function PacManRunningOnText({
 
   useEffect(() => {
     const handleResize = () => {
+      setScreenHeight(window.innerHeight);
+      setScreenWidth(window.innerWidth);
       const textHeight = textRef.current.scrollHeight;
       const lineHeightPx = screenHeight * 0.02; // 2vh in pixels
       const totalAmountOfLines = Math.ceil(textHeight / lineHeightPx - 3);
