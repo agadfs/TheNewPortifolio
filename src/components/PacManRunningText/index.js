@@ -7,7 +7,6 @@ export default function PacManRunningOnText({
   textType,
   textColor,
 }) {
-
   const [pacManStartReset, setPacManStartReset] = useState(-200);
   const [totalAmountOfLines, setTotalAmountOfLines] = useState(0);
   const [stopPacman, setStopPacman] = useState(false);
@@ -23,7 +22,7 @@ export default function PacManRunningOnText({
         setScreenHeight(screenHeight2);
         setPacManStartReset(200);
         const textHeight = textRef.current.scrollHeight;
-        const lineHeightPx = screenHeight * 0.02; 
+        const lineHeightPx = screenHeight * 0.02;
         const totalAmountOfLines = Math.ceil(textHeight / lineHeightPx - 3);
         setTextHeight(textHeight);
         setTotalAmountOfLines(totalAmountOfLines);
@@ -39,13 +38,17 @@ export default function PacManRunningOnText({
     };
   }, [screenHeight]);
 
-  
-
   return (
     <div className={styles.container}>
       <div
         className={styles.text}
-        style={{ color: textColor, lineHeight: "2vh", fontSize: "2vh", padding:"5%" }}
+        style={{
+          color: textColor,
+          lineHeight: "2vh",
+          fontSize: "2vh",
+          padding: "5%",
+          textAlign: "center",
+        }}
         ref={textRef}
       >
         <div
@@ -93,7 +96,7 @@ export default function PacManRunningOnText({
               style={{
                 height: `${textHeight}px`,
                 width: `400vw`,
-                left: `${textHeight/2}px`,
+                left: `${textHeight / 2}px`,
               }}
             ></div>
           </div>

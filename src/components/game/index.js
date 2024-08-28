@@ -1,7 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import ButtonTextAnimator from "../ButtonAnimator";
-import Button1 from "../buttonPc";
 import PageTitle from "../PageTitle";
 
 const PacMan = ({ isMobile }) => {
@@ -75,11 +73,11 @@ const PacMan = ({ isMobile }) => {
     }
   };
   const handleButtonPress = (key) => {
-    handleKeyDown({ key }); // Simula o pressionamento da tecla
+    handleKeyDown({ key }); 
   };
   
   const handleButtonRelease = (key) => {
-    handleKeyUp({ key }); // Simula o soltar da tecla
+    handleKeyUp({ key }); 
   };
   useEffect(() => {
     const moveInterval = setInterval(() => {
@@ -134,7 +132,6 @@ const PacMan = ({ isMobile }) => {
           if (newTop === 0 && newLeft === 50) {
             window.location.href = "/about";
           }
-
           return { top: newTop, left: newLeft };
         });
       }
@@ -148,17 +145,10 @@ const PacMan = ({ isMobile }) => {
     window.addEventListener("keyup", handleKeyUp);
     const updateScaleFactor = () => {
       const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
-  
-      
+      const windowHeight = window.innerHeight;  
       const widthScale = windowWidth / 2200;
       const heightScale = windowHeight / 500;
-  
-      
       const scale = Math.min(widthScale, heightScale);
-      console.log("scale changed: ", scale)
-      console.log("width used: ", windowWidth)
-      console.log("height used: ", windowHeight)
       setScaleFactor(scale);
     };
     updateScaleFactor();
@@ -209,11 +199,14 @@ const PacMan = ({ isMobile }) => {
                 scale: isMobile ? 0.3/scaleFactor : 1,
               }}
             >
-              <ButtonTextAnimator
-                backgroundColor={"rgba(102, 252, 241)"}
-                text={"ABOUT ME"}
-                fontSizeVw={isMobile ? `${200*scaleFactor}` : "55"}
-              />
+              <div style={{
+                color:"rgba(102, 252, 241, 1)",
+                fontSize: isMobile ? `${200*scaleFactor}px` : "55px",
+                display: "inline-block", 
+              }} >
+                ABOUT ME
+              </div>
+              
             </div>
           </div>
         ) : cell === 3 ? (
@@ -239,11 +232,13 @@ const PacMan = ({ isMobile }) => {
                 scale: isMobile ? 0.3/scaleFactor : 1,
               }}
             >
-              <ButtonTextAnimator
-                backgroundColor={"rgba(102, 252, 241)"}
-                text={"PROJECTS"}
-                fontSizeVw={isMobile ? `${200*scaleFactor}` : "55"}
-              />
+              <div style={{
+                color:"rgba(102, 252, 241, 1)",
+                fontSize: isMobile ? `${200*scaleFactor}px` : "55px",
+                display: "inline-block", 
+              }} >
+                PROJECTS
+              </div>
             </div>
           </div>
         ) : cell === 4 ? (
@@ -269,11 +264,13 @@ const PacMan = ({ isMobile }) => {
                 scale: isMobile ? 0.3/scaleFactor : 1,
               }}
             >
-              <ButtonTextAnimator
-                backgroundColor={"rgba(102, 252, 241)"}
-                text={"SKILLS"}
-                fontSizeVw={isMobile ? `${200*scaleFactor}` : "55"}
-              />
+              <div style={{
+                color:"rgba(102, 252, 241, 1)",
+                fontSize: isMobile ? `${200*scaleFactor}px` : "55px",
+                display: "inline-block", 
+              }} >
+                SKILLS
+              </div>
             </div>
           </div>
         ) : cell === 5 ? (
@@ -299,11 +296,13 @@ const PacMan = ({ isMobile }) => {
                 scale: isMobile ? 0.3/scaleFactor : 1,
               }}
             >
-              <ButtonTextAnimator
-                backgroundColor={"rgba(102, 252, 241)"}
-                text={"CONTACT"}
-                fontSizeVw={isMobile ? `${200*scaleFactor}` : "55"}
-              />
+              <div style={{
+                color:"rgba(102, 252, 241, 1)",
+                fontSize: isMobile ? `${200*scaleFactor}px` : "55px",
+                display: "inline-block", 
+              }} >
+                CONTACT
+              </div>
             </div>
           </div>
         ) : cell === 6 ? (
