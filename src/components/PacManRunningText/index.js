@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./pacman.module.css";
+import AboutText from "../AboutText";
 
 export default function PacManRunningOnText({
   textToRunOn,
@@ -21,7 +22,7 @@ export default function PacManRunningOnText({
       if (screenHeight2 && screenWidth2) {
         setScreenHeight(screenHeight2);
         setPacManStartReset(200);
-        const textHeight = textRef.current.scrollHeight;
+        const textHeight = textRef.current.scrollHeight;  
         const lineHeightPx = screenHeight * 0.02;
         const totalAmountOfLines = Math.ceil(textHeight / lineHeightPx - 3);
         setTextHeight(textHeight);
@@ -46,7 +47,7 @@ export default function PacManRunningOnText({
           color: textColor,
           lineHeight: "2vh",
           fontSize: "2vh",
-          padding: "5%",
+          padding: "4vh",
           textAlign: "center",
         }}
         ref={textRef}
@@ -101,7 +102,8 @@ export default function PacManRunningOnText({
             ></div>
           </div>
         </div>
-        {textToRunOn}
+        <AboutText text={textToRunOn} fontSizeVw={3} />
+        
       </div>
     </div>
   );

@@ -1,0 +1,45 @@
+.gridSkills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1%;
+    width: 100vw;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .skillButton {
+    text-align: center;
+    color: white;
+    width: auto;
+    letter-spacing: 0.15em;
+    font-size: 2vw;
+    border: 1px solid white;
+    overflow: hidden;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .skillButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+  }
+  
+  .skillDetails {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    font-size: 4vh;
+    margin-top: 20px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 1s ,  padding 1s;
+  }
+  
+  .skillDetails.show {
+    max-height: 500px; 
+    padding: 20px; 
+  }
+  
+  

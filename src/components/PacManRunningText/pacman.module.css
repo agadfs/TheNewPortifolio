@@ -8,10 +8,8 @@
   position: relative;
   overflow: hidden;
   font-size: 2vw;
-  padding: 1vw;
-  white-space: pre-wrap;
-  /* Adjust alignment if needed */
-  align-items: flex-start; /* or remove flex display if not needed */
+  align-items: center; 
+  margin-bottom: -5vh;
 }
 
 .mouth {

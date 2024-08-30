@@ -12,6 +12,12 @@ body {
   -khtml-user-select: none;
   touch-action: manipulation;
   overscroll-behavior: none;
+
+ font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  
+
+
   
 }
 

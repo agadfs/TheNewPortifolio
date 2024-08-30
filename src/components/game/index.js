@@ -73,11 +73,11 @@ const PacMan = ({ isMobile }) => {
     }
   };
   const handleButtonPress = (key) => {
-    handleKeyDown({ key }); 
+    handleKeyDown({ key });
   };
-  
+
   const handleButtonRelease = (key) => {
-    handleKeyUp({ key }); 
+    handleKeyUp({ key });
   };
   useEffect(() => {
     const moveInterval = setInterval(() => {
@@ -145,14 +145,14 @@ const PacMan = ({ isMobile }) => {
     window.addEventListener("keyup", handleKeyUp);
     const updateScaleFactor = () => {
       const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;  
+      const windowHeight = window.innerHeight;
       const widthScale = windowWidth / 2200;
       const heightScale = windowHeight / 500;
       const scale = Math.min(widthScale, heightScale);
       setScaleFactor(scale);
     };
     updateScaleFactor();
-    
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
@@ -171,9 +171,9 @@ const PacMan = ({ isMobile }) => {
               left: `${colIndex * 50}px`,
               width: "50px",
               height: "50px",
-              backgroundColor: "black",
+              backgroundColor: "rgba(102, 252, 241 ,0.2)",
               borderRadius: "0px",
-              border: "2px solid blue",
+              border: "2px solid rgba(102, 252, 241)",
             }}
           />
         ) : cell === 2 ? (
@@ -183,10 +183,10 @@ const PacMan = ({ isMobile }) => {
               position: "absolute",
               top: `${rowIndex * 50}px`,
               left: `${colIndex * 50}px`,
-              width: "52px",
-              height: "52px",
+              width: "50px",
+              height: "54px",
               backgroundColor: "rgba(102, 252, 241)",
-              filter: "drop-shadow(0 0 30px rgba(102, 252, 241, 0.8))",
+              filter: "drop-shadow(0 10px 40px rgba(102, 252, 241, 0.9))",
             }}
           >
             <div
@@ -196,17 +196,18 @@ const PacMan = ({ isMobile }) => {
                 right: 30,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
-                scale: isMobile ? 0.3/scaleFactor : 1,
+                scale: isMobile ? 0.3 / scaleFactor : 1,
               }}
             >
-              <div style={{
-                color:"rgba(102, 252, 241, 1)",
-                fontSize: isMobile ? `${200*scaleFactor}px` : "55px",
-                display: "inline-block", 
-              }} >
+              <div
+                style={{
+                  color: "rgba(102, 252, 241, 1)",
+                  fontSize: isMobile ? `${200 * scaleFactor}px` : "55px",
+                  display: "inline-block",
+                }}
+              >
                 ABOUT ME
               </div>
-              
             </div>
           </div>
         ) : cell === 3 ? (
@@ -216,10 +217,10 @@ const PacMan = ({ isMobile }) => {
               position: "absolute",
               top: `${rowIndex * 50}px`,
               left: `${colIndex * 50}px`,
-              width: "52px",
-              height: "52px",
+              width: "50px",
+              height: "54px",
               backgroundColor: "rgba(102, 252, 241)",
-              filter: "drop-shadow(0 0 30px rgba(102, 252, 241, 0.8))",
+              filter: "drop-shadow(0 10px 40px rgba(102, 252, 241, 0.9))",
             }}
           >
             <div
@@ -229,14 +230,16 @@ const PacMan = ({ isMobile }) => {
                 right: 30,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
-                scale: isMobile ? 0.3/scaleFactor : 1,
+                scale: isMobile ? 0.3 / scaleFactor : 1,
               }}
             >
-              <div style={{
-                color:"rgba(102, 252, 241, 1)",
-                fontSize: isMobile ? `${200*scaleFactor}px` : "55px",
-                display: "inline-block", 
-              }} >
+              <div
+                style={{
+                  color: "rgba(102, 252, 241, 1)",
+                  fontSize: isMobile ? `${200 * scaleFactor}px` : "55px",
+                  display: "inline-block",
+                }}
+              >
                 PROJECTS
               </div>
             </div>
@@ -249,9 +252,9 @@ const PacMan = ({ isMobile }) => {
               top: `${rowIndex * 50}px`,
               left: `${colIndex * 50}px`,
               width: "52px",
-              height: "52px",
+              height: "54px",
               backgroundColor: "rgba(102, 252, 241)",
-              filter: "drop-shadow(0 0 30px rgba(102, 252, 241, 0.8))",
+              filter: "drop-shadow(0 10px 40px rgba(102, 252, 241, 0.9))",
             }}
           >
             <div
@@ -261,14 +264,16 @@ const PacMan = ({ isMobile }) => {
                 right: 50,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
-                scale: isMobile ? 0.3/scaleFactor : 1,
+                scale: isMobile ? 0.3 / scaleFactor : 1,
               }}
             >
-              <div style={{
-                color:"rgba(102, 252, 241, 1)",
-                fontSize: isMobile ? `${200*scaleFactor}px` : "55px",
-                display: "inline-block", 
-              }} >
+              <div
+                style={{
+                  color: "rgba(102, 252, 241, 1)",
+                  fontSize: isMobile ? `${200 * scaleFactor}px` : "55px",
+                  display: "inline-block",
+                }}
+              >
                 SKILLS
               </div>
             </div>
@@ -280,10 +285,10 @@ const PacMan = ({ isMobile }) => {
               position: "absolute",
               top: `${rowIndex * 50}px`,
               left: `${colIndex * 50}px`,
-              width: "52px",
+              width: "54px",
               height: "52px",
               backgroundColor: "rgba(102, 252, 241)",
-              filter: "drop-shadow(0 0 30px rgba(102, 252, 241, 0.8))",
+              filter: "drop-shadow(0 10px 40px rgba(102, 252, 241, 0.9))",
             }}
           >
             <div
@@ -293,14 +298,16 @@ const PacMan = ({ isMobile }) => {
                 left: -200,
                 textWrap: "nowrap",
                 backgroundColor: "transparent",
-                scale: isMobile ? 0.3/scaleFactor : 1,
+                scale: isMobile ? 0.3 / scaleFactor : 1,
               }}
             >
-              <div style={{
-                color:"rgba(102, 252, 241, 1)",
-                fontSize: isMobile ? `${200*scaleFactor}px` : "55px",
-                display: "inline-block", 
-              }} >
+              <div
+                style={{
+                  color: "rgba(102, 252, 241, 1)",
+                  fontSize: isMobile ? `${200 * scaleFactor}px` : "55px",
+                  display: "inline-block",
+                }}
+              >
                 CONTACT
               </div>
             </div>
@@ -420,7 +427,7 @@ const PacMan = ({ isMobile }) => {
               alignItems: "center",
               scale: 4,
               gap: "10px",
-              backgroundColor:"transparent",
+              backgroundColor: "transparent",
             }}
           >
             <div>
