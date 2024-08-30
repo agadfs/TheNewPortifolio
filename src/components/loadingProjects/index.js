@@ -9,29 +9,48 @@ export default function LoadingProjects() {
 
   const Projects = [
     {
-      name: "Project 1",
-      description: "Description 1",
-      linkUrl: "Link 1",
+      name: "Pro+ Club Mobile App",
+      description: `This was request for me to take care of, a remake of the mobile app Clube Pro+ by
+Total Energies, a global integrated energy company. The app is a full stack cashback app for products of Total
+Energies.
+
+
+Using Expo and React Native as frameworks for frontend and axios for integrations.
+MySql, Express and Next.js for backend.
+Most of the time is a full stack job, requiring strong analytical, organizing and creative skills to
+understand, replicate and improve the old app`,
+      linkUrl: "No link available",
     },
     {
-      name: "Project 2",
-      description: "Description 2",
-      linkUrl: "Link 2",
+      name: "Le Garden",
+      description: `
+      Official website of a famous inn in the southeast region of Brazil. A platform was created to be able to change
+anything on the website with just one click without the help of the developer with reservation feedback for the
+inn via email.
+ Using React, Next JS and Dato CMS for friendly no-code changes on the app
+ Express and Next.js for backend, with full customized integration of calendar, stock, inventory and
+booking of the inn.
+ Needs to fully understand the documentation of Next.js to fully integrate with DatoCMS, and the
+custom made booking api so it allows the costumer to make changes without coding or invervention
+of the developer
+
+      `,
+      linkUrl: "No link available",
     },
     {
-      name: "Project 3",
+      name: "Digicoins",
       description: "Description 3",
-      linkUrl: "Link 3",
+      linkUrl: "No link available",
     },
     {
       name: "Project 4",
       description: "Description 4",
-      linkUrl: "Link 4",
+      linkUrl: "No link available",
     },
     {
       name: "Project 5",
       description: "Description 5",
-      linkUrl: "Link 5",
+      linkUrl: "No link available",
     },
   ];
 
