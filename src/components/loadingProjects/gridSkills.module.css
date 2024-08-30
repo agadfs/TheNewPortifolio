@@ -1,0 +1,88 @@
+.gridSkills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1%;
+    padding-inline: 5vw;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+ 
+.projectButton {
+  border: 1px solid white;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  min-width: 20vw;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.projectButton:hover {
+  transform: scale(1.1); 
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+  
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.blink-multiple {
+  animation: blink 0.1s steps(2, start) 10; /* 10 blinks, 0.1s each */
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+.projectButton {
+  border: 1px solid white;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  min-width: 20vw;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.projectButton:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.1);
+}
