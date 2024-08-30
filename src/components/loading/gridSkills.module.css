@@ -2,7 +2,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1%;
-    width: 100vw;
+    padding-inline: 5vw;
+    width: auto;
     height: auto;
     justify-content: center;
     align-items: center;
@@ -31,7 +32,7 @@
     color: white;
     padding: 20px;
     font-size: 4vh;
-    margin-top: 20px;
+    margin-top: 0px;
     overflow: hidden;
     max-height: 0;
     transition: max-height 1s ,  padding 1s;

@@ -20,7 +20,7 @@ export default function AboutPage() {
       <PageTitle text="About me" />
       {textCounter >= 0 && (
         <PacManRunningOnText
-          textToRunOn={`I started my academic career in Physics, drawn to understanding the fundamental principles that govern our universe. However, my passion took a new direction when I discovered the world of programming. Captivated by the power of coding to solve complex problems and build innovative solutions, I decided to pivot my studies to Computer Science. Throughout my journey, I've explored languages such as C++ and Python, laying a solid foundation in programming. But it was with JavaScript that I truly found my niche. Now, as a full-stack developer, I specialize in building responsive, user-centric applications, leveraging my skills in JavaScript to create seamless and dynamic user experiences.`}
+          textToRunOn={`I started my first 4 years of academic career in Physics, drawn to understanding the fundamental principles that govern our universe. However, my passion took a new direction when I discovered the world of programming. Captivated by the power of coding to solve complex problems and build innovative solutions, I decided to pivot my studies to Computer Science. Throughout my journey, I've explored languages such as C++ and Python, laying a solid foundation in programming. But it was with JavaScript that I truly found my niche. Now, as a full-stack developer, I specialize in building responsive, user-centric applications, leveraging my skills in JavaScript to create seamless and dynamic user experiences.`}
           textColor={"white"}
         />
       )}
