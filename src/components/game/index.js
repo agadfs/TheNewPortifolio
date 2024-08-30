@@ -361,10 +361,10 @@ const PacMan = ({ isMobile }) => {
       <div
         style={{
           position: "absolute",
-          top: `${position.top}px`,
-          left: `${position.left}px`,
-          width: "50px",
-          height: "50px",
+          top: `${position.top+4}px`,
+          left: `${position.left+4}px`,
+          width: "46px",
+          height: "46px",
           backgroundColor: "yellow",
           borderRadius: "50%",
           transition: "transform 0.1s, top 0.2s, left 0.2s",
