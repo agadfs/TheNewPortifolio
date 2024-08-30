@@ -415,7 +415,7 @@ const PacMan = ({ isMobile }) => {
             width: "100%",
             position: "absolute",
             zIndex: 50,
-            bottom: "-70%",
+            bottom: "-70vh",
             justifyContent: "center",
           }}
         >
@@ -425,7 +425,7 @@ const PacMan = ({ isMobile }) => {
               flexDirection: "column",
               alignContent: "center",
               alignItems: "center",
-              scale: 4,
+              scale: 5,
               gap: "10px",
               backgroundColor: "transparent",
             }}
