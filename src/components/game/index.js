@@ -146,8 +146,8 @@ const PacMan = ({ isMobile }) => {
     const updateScaleFactor = () => {
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;
-      const widthScale = windowWidth / 2000;
-      const heightScale = windowHeight / 500;
+      const widthScale = windowWidth / 1900;
+      const heightScale = windowHeight / 1900;
       const scale = Math.min(widthScale, heightScale);
       setScaleFactor(scale);
     };
