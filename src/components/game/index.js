@@ -50,14 +50,14 @@ const PacMan = ({ isMobile }) => {
 
   const [map, setMap] = useState([
     [1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1],
-    [1, 0, 0, 6, 0, 0, 0, 6, 0, 6, 0, 6, 0, 6, 0, 0, 6, 6, 6, 1],
-    [1, 0, 1, 0, 1, 6, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 6, 1, 6, 1],
+    [1, 0, 6, 6, 0, 0, 0, 6, 0, 6, 0, 6, 0, 6, 0, 0, 6, 6, 6, 1],
+    [1, 0, 1, 0, 1, 6, 1, 1, 0, 1, 0, 0, 6, 1, 1, 1, 6, 1, 6, 1],
     [1, 6, 1, 0, 1, 6, 1, 0, 6, 1, 1, 0, 0, 1, 0, 1, 6, 6, 6, 1],
     [1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 6, 1, 1, 0, 0, 1, 0, 1],
-    [1, 6, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 6, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 6, 1],
     [1, 0, 1, 0, 1, 6, 1, 0, 6, 1, 0, 1, 6, 1, 6, 1, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 6, 1, 0, 1, 0, 1, 6, 1],
-    [1, 0, 6, 0, 0, 6, 0, 6, 0, 0, 6, 0, 0, 0, 0, 6, 0, 0, 0, 5],
+    [1, 6, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 6, 1, 0, 1, 0, 1, 6, 1],
+    [1, 0, 6, 0, 0, 6, 0, 6, 6, 0, 6, 0, 0, 0, 0, 6, 0, 0, 0, 1],
     [1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ]);
   const handleKeyUp = (event) => {
@@ -146,7 +146,7 @@ const PacMan = ({ isMobile }) => {
     const updateScaleFactor = () => {
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;
-      const widthScale = windowWidth / 2200;
+      const widthScale = windowWidth / 2000;
       const heightScale = windowHeight / 500;
       const scale = Math.min(widthScale, heightScale);
       setScaleFactor(scale);
@@ -278,41 +278,7 @@ const PacMan = ({ isMobile }) => {
               </div>
             </div>
           </div>
-        ) : cell === 5 ? (
-          <div
-            key={`${rowIndex}-${colIndex}`}
-            style={{
-              position: "absolute",
-              top: `${rowIndex * 50}px`,
-              left: `${colIndex * 50}px`,
-              width: "54px",
-              height: "52px",
-              backgroundColor: "rgba(102, 252, 241)",
-              filter: "drop-shadow(0 10px 40px rgba(102, 252, 241, 0.9))",
-            }}
-          >
-            <div
-              style={{
-                position: "relative",
-                top: 110,
-                left: -200,
-                textWrap: "nowrap",
-                backgroundColor: "transparent",
-                scale: isMobile ? 0.3 / scaleFactor : 1,
-              }}
-            >
-              <div
-                style={{
-                  color: "rgba(102, 252, 241, 1)",
-                  fontSize: isMobile ? `${200 * scaleFactor}px` : "55px",
-                  display: "inline-block",
-                }}
-              >
-                CONTACT
-              </div>
-            </div>
-          </div>
-        ) : cell === 6 ? (
+        )  : cell === 6 ? (
           <div
             key={`${rowIndex}-${colIndex}`}
             style={{

@@ -9,6 +9,17 @@ export default function LoadingProjects() {
 
   const Projects = [
     {
+      name: "Concordia University Intership",
+      description: `Dr. Professor Yann-Gael from Concordia University, is responsible for the PTIDEJ software, and many others.
+The PTIDEJ software is the project that I will be working with him, and it’s a tool for many programming
+languages that can read the full code of a file, analyze each class, component and model of the its code.
+It contains many parsers and compilers that can read, optimize and show every object, class, model of any
+function written in JAVA, C++, C#, Python and one of my current projects are to enable for JavaScript.
+Professor Yann-Gael and this project is introducing me so many new programming languages, and many
+new people and cultures that I’m very excited to be part of this team.`,
+      linkUrl: "No link available",
+    },
+    {
       name: "Pro+ Club Mobile App",
       description: `This was request for me to take care of, a remake of the mobile app Clube Pro+ by
 Total Energies, a global integrated energy company. The app is a full stack cashback app for products of Total
@@ -39,17 +50,24 @@ of the developer
     },
     {
       name: "Digicoins",
-      description: "Description 3",
+      description: `A website that is fully integrated with crypto currencies API’s, Metamask for creation, management and purchase
+of crypto coins such as Etherium, BitCoin and so on. And to show up to date and real time information of each of
+these coins, is used CoinGecko.
+Using NextJS as the primary framework to integrate with the rest of the app.
+Full integration with the browser extension and mobile app of Metamask.
+ Real time information, containing graphs, charts and market variations.`,
       linkUrl: "No link available",
     },
     {
-      name: "Project 4",
-      description: "Description 4",
-      linkUrl: "No link available",
-    },
-    {
-      name: "Project 5",
-      description: "Description 5",
+      name: "Project RP",
+      description: `
+      A complete platform and social network for playing tabletop RPGs and MMORPGs, featuring a full inventory system, attributes, and map creation. 
+      There's also a second version of the site that logs data in real-time to simulate an MMORPG.
+      In addition to everything from the other version, it includes an algorithm that manages everything in the game, 
+      such as NPC movements, items on the ground, map design changes, and a "pathfinding" system (which determines if the path has obstacles), 
+      along with much more that cannot be briefly mentioned here.
+
+      `,
       linkUrl: "No link available",
     },
   ];
@@ -92,6 +110,10 @@ of the developer
           width: "100vw",
           justifyContent: "center",
           flexWrap: "wrap",
+          alignItems: "center",
+          alignContent: "center",
+          justifyItems: "center",
+          alignSelf: "center",
         }}
       >
         {Projects.map((project, index) => {
@@ -101,7 +123,7 @@ of the developer
               onClick={() => handleClick(project)}
               key={index}
             >
-              <h1>{project.name}</h1>
+              <p style={{fontSize:"4vh", textAlign:"center"}} >{project.name}</p>
             </div>
           );
         })}
@@ -146,12 +168,16 @@ of the developer
           }}
         >
           <h1>Click to spawn a project</h1>
-          <h1>First spawn takes 2 seconds!</h1>
         </div>
       )}
       {selectedProject && hp === 0 && (
         <div style={{ color: "white", alignSelf: "center" }}>
           <h1>Respawning...</h1>
+        </div>
+      )}
+      {selectedProject === null && hp === 0 && (
+        <div style={{ color: "white", alignSelf: "center" }}>
+          <h1>Spawning...</h1>
         </div>
       )}
       <div

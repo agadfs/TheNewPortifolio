@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import HeaderPc1 from "@/src/components/headerPc";
 import { AppProvider, MobileProvider } from "@/src/components/context";
+import FooterPc1 from "@/src/components/footer";
 
 export const metadata = {
   title: "Portifolio",
@@ -47,6 +48,7 @@ export default function RootLayout({ children }) {
             />
           </div>
           {children}
+          <FooterPc1 />
         </body>
       </html>
     </AppProvider>
