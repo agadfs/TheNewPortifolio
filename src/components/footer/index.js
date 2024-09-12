@@ -71,7 +71,7 @@ export default function FooterPc1() {
             flexDirection: "column",
           }}
         >
-          <p>My Portfolio</p>
+          <p>My CV</p>
           <a
             href="/ResumeHenriqueDeFreitasSerra.pdf" // Replace with the path to your PDF file
             target="_blank" // Opens the PDF in a new tab
