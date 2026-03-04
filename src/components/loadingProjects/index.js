@@ -9,66 +9,79 @@ export default function LoadingProjects() {
 
   const Projects = [
     {
-      name: "Concordia University Intership",
-      description: `Dr. Professor Yann-Gael from Concordia University, is responsible for the PTIDEJ software, and many others.
-The PTIDEJ software is the project that I will be working with him, and it’s a tool for many programming
-languages that can read the full code of a file, analyze each class, component and model of the its code.
-It contains many parsers and compilers that can read, optimize and show every object, class, model of any
-function written in JAVA, C++, C#, Python and one of my current projects are to enable for JavaScript.
-Professor Yann-Gael and this project is introducing me so many new programming languages, and many
-new people and cultures that I’m very excited to be part of this team.`,
-      linkUrl: "No link available",
+      name: "BDMobility – Mobility Analysis Platform",
+      description: `Lead developer of BDMobility, a comprehensive research platform designed to analyze transportation behavior and urban mobility patterns.
+      
+Technologies: Flutter, Next.js, TypeScript, PostgreSQL, Docker
+
+Key features:
+• Mobile application collecting GPS mobility data
+• Backend pipeline processing 20M+ coordinates and 200,000+ recorded trips
+• Route similarity detection and trip clustering algorithms
+• Traffic delay analysis and route deviation detection
+• Interactive research dashboards for data exploration
+• Geospatial data processing with Fréchet distance path comparison
+
+The platform is distributed through a public Flutter mobile application available on app stores and serves interdisciplinary research teams studying urban mobility and migration patterns.`,
+      linkUrl: "github.com/agadfs",
     },
     {
-      name: "Pro+ Club Mobile App",
-      description: `This was request for me to take care of, a remake of the mobile app Clube Pro+ by
-Total Energies, a global integrated energy company. The app is a full stack cashback app for products of Total
-Energies.
+      name: "University Conference Management Platform",
+      description: `Complete conference management infrastructure for Concordia University, designed for student organizers and academic committees.
 
+Key capabilities:
+• Full database, backend, and frontend architecture
+• Multi-role dashboards for organizers, presenters, judges, and sponsors
+• Conference schedule management with automated suggestions and autofill
+• Payment systems and registration management
+• Submission and publication systems for presentations and posters
+• Judge assignment and automated scheduling tools
+• Sponsor dashboards for managing partnerships
 
-Using Expo and React Native as frameworks for frontend and axios for integrations.
-MySql, Express and Next.js for backend.
-Most of the time is a full stack job, requiring strong analytical, organizing and creative skills to
-understand, replicate and improve the old app`,
-      linkUrl: "No link available",
+The system provides a centralized platform for organizing large academic conferences, replacing manual workflows with integrated digital tools.`,
+      linkUrl: "In development",
     },
     {
-      name: "Le Garden",
-      description: `
-      Official website of a famous inn in the southeast region of Brazil. A platform was created to be able to change
-anything on the website with just one click without the help of the developer with reservation feedback for the
-inn via email.
- Using React, Next JS and Dato CMS for friendly no-code changes on the app
- Express and Next.js for backend, with full customized integration of calendar, stock, inventory and
-booking of the inn.
- Needs to fully understand the documentation of Next.js to fully integrate with DatoCMS, and the
-custom made booking api so it allows the costumer to make changes without coding or invervention
-of the developer
+      name: "CRVJA – AMOS BASIC Interpreter",
+      description: `A browser-based interpreter for the AMOS BASIC programming language originally used on the Commodore Amiga.
 
-      `,
-      linkUrl: "No link available",
+Technologies: JavaScript, React, Next.js
+
+Key features:
+• Reverse-engineered AMOS tokenized binary format
+• Built tokenizer and interpreter capable of executing legacy programs
+• Browser-based rendering of graphics and animations
+• Support for sprite banks and Amiga assets
+• Used in Concordia programming camps to teach programming fundamentals
+
+This project demonstrates expertise in interpreter design, binary file parsing, and reverse engineering of legacy systems.`,
+      linkUrl: "github.com/agadfs",
     },
     {
-      name: "Digicoins",
-      description: `A website that is fully integrated with crypto currencies API’s, Metamask for creation, management and purchase
-of crypto coins such as Etherium, BitCoin and so on. And to show up to date and real time information of each of
-these coins, is used CoinGecko.
-Using NextJS as the primary framework to integrate with the rest of the app.
-Full integration with the browser extension and mobile app of Metamask.
- Real time information, containing graphs, charts and market variations.`,
-      linkUrl: "No link available",
+      name: "PTIDEJ Research Software",
+      description: `Research Software Developer at PTIDEJ Research Group – Concordia University. Contributor to PTIDEJ, a major academic software engineering research platform used to analyze object-oriented software architecture.
+
+Key contributions:
+• Modernized core parsing infrastructure including CFParse for constant pool parsing
+• Updated legacy components to ensure compatibility with modern Java versions
+• Fixed architectural and stability issues across the platform
+• Contributed improvements to research tools for analyzing software design patterns
+
+The PTIDEJ platform can read, analyze, and model code from multiple programming languages including Java, C++, C#, and Python.`,
+      linkUrl: "Concordia University",
     },
     {
-      name: "Project RP",
-      description: `
-      A complete platform and social network for playing tabletop RPGs and MMORPGs, featuring a full inventory system, attributes, and map creation. 
-      There's also a second version of the site that logs data in real-time to simulate an MMORPG.
-      In addition to everything from the other version, it includes an algorithm that manages everything in the game, 
-      such as NPC movements, items on the ground, map design changes, and a "pathfinding" system (which determines if the path has obstacles), 
-      along with much more that cannot be briefly mentioned here.
+      name: "AMOS Binary Decoder",
+      description: `Advanced tools for decoding tokenized AMOS BASIC files and reconstructing readable source code from binary formats.
 
-      `,
-      linkUrl: "No link available",
+Key features:
+• Reverse engineering of binary token structures
+• Parsing commands, variables, strings, and floating-point values
+• Reconstruction of original program structure and logic
+• Documentation of the AMOS BASIC binary format
+
+This project required deep understanding of binary file formats, tokenization systems, and programming language internals.`,
+      linkUrl: "github.com/agadfs",
     },
   ];
 

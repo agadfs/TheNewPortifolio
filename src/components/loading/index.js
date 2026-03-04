@@ -6,52 +6,85 @@ export default function Loading({ progress, completed }) {
   const [loadAnimation, setLoadAnimation] = useState(1);
   const [selectedSkill, setSelectedSkill] = useState("");
 
-  const JavaScript_Node_FrontEnd = [
+  const Frontend = [
     "React",
+    "Next.js",
     "Angular",
     "Vue.js",
-    "jQuery",
-    "Next.js",
+    "TypeScript",
+    "JavaScript",
     "Redux",
     "Three.js",
     "Tailwind CSS",
     "Material-UI",
-    "Ant Design",
   ];
 
-  const JavaScript_Node_BackEnd = [
+  const Backend = [
+    "Node.js",
     "Express",
-    "MongoDB",
-    "Mongoose",
-    "Socket.io",
-    "GraphQL",
-    "Prisma",
-    "NestJS",
     "Next.js",
-    "Gatsby",
-    "LoopBack",
-    "SocketCluster",
+    "GraphQL",
+    "NestJS",
     "Serverless Framework",
-    "Firebase Functions",
+    "REST APIs",
   ];
   
-  const Java = ["Spring", "Hibernate", "Maven"];
-  const CSharp = [".NET Core", "Entity Framework", "Unity Engine"];
+  const MobileDevelopment = [
+    "Flutter",
+    "Dart",
+    "Kotlin",
+    "Swift",
+    "iOS Development",
+    "Android Development",
+    "Cross-platform Apps",
+  ];
+
+  const Databases = [
+    "PostgreSQL",
+    "MongoDB",
+    "Firebase",
+    "Neon Serverless Postgres",
+    "SQL",
+  ];
+
+  const DevOpsCloud = [
+    "Docker",
+    "GitHub Actions",
+    "Vercel",
+    "AWS",
+    "CI/CD",
+  ];
+
+  const SpecializedSkills = [
+    "Geospatial Data Processing",
+    "Trip Clustering",
+    "Route Similarity Analysis",
+    "Parallel Processing",
+    "Binary File Parsing",
+    "Interpreter Design",
+    "Research Software Development",
+    "Scientific Data Visualization",
+  ];
+  
+  const Java = ["Java", "Research Software", "PTIDEJ Platform", "Legacy Modernization"];
+  const Research = ["Academic Software", "Data Pipelines", "Conference Presentations", "Open Source"];
 
 
-  const frontEndThreshold = 100 / JavaScript_Node_FrontEnd.length;
-  const backEndThreshold = 100 / JavaScript_Node_BackEnd.length;
-
- 
-  const shownFrontEndSkills = JavaScript_Node_FrontEnd.slice(
-    0,
-    Math.floor(progress / frontEndThreshold)
+  const threshold = 100 / Math.max(
+    Frontend.length,
+    Backend.length,
+    MobileDevelopment.length,
+    Databases.length,
+    DevOpsCloud.length,
+    SpecializedSkills.length
   );
 
-  const shownBackEndSkills = JavaScript_Node_BackEnd.slice(
-    0,
-    Math.floor(progress / backEndThreshold)
-  );
+  const shownFrontend = Frontend.slice(0, Math.floor(progress / threshold));
+  const shownBackend = Backend.slice(0, Math.floor(progress / threshold));
+  const shownMobile = MobileDevelopment.slice(0, Math.floor(progress / threshold));
+  const shownDatabases = Databases.slice(0, Math.floor(progress / threshold));
+  const shownDevOps = DevOpsCloud.slice(0, Math.floor(progress / threshold));
+  const shownSpecialized = SpecializedSkills.slice(0, Math.floor(progress / threshold));
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -62,19 +95,58 @@ export default function Loading({ progress, completed }) {
   }, []);
 
   const renderSkills = () => {
-    if (selectedSkill === "javascript") {
+    if (selectedSkill === "fullstack") {
       return (
         <>
-          <h2>Front-End Skills</h2>
+          <h2>Frontend</h2>
           <ul>
-            {shownFrontEndSkills.map((skill, index) => (
+            {shownFrontend.map((skill, index) => (
               <li key={`frontend-${index}`}>{skill}</li>
             ))}
           </ul>
-          <h2>Back-End Skills</h2>
+          <h2>Backend</h2>
           <ul>
-            {shownBackEndSkills.map((skill, index) => (
+            {shownBackend.map((skill, index) => (
               <li key={`backend-${index}`}>{skill}</li>
+            ))}
+          </ul>
+          <h2>Databases</h2>
+          <ul>
+            {shownDatabases.map((skill, index) => (
+              <li key={`database-${index}`}>{skill}</li>
+            ))}
+          </ul>
+        </>
+      );
+    } else if (selectedSkill === "mobile") {
+      return (
+        <>
+          <h2>Mobile Development</h2>
+          <ul>
+            {shownMobile.map((skill, index) => (
+              <li key={`mobile-${index}`}>{skill}</li>
+            ))}
+          </ul>
+        </>
+      );
+    } else if (selectedSkill === "devops") {
+      return (
+        <>
+          <h2>DevOps & Cloud</h2>
+          <ul>
+            {shownDevOps.map((skill, index) => (
+              <li key={`devops-${index}`}>{skill}</li>
+            ))}
+          </ul>
+        </>
+      );
+    } else if (selectedSkill === "specialized") {
+      return (
+        <>
+          <h2>Specialized Engineering</h2>
+          <ul>
+            {shownSpecialized.map((skill, index) => (
+              <li key={`specialized-${index}`}>{skill}</li>
             ))}
           </ul>
         </>
@@ -82,23 +154,23 @@ export default function Loading({ progress, completed }) {
     } else if (selectedSkill === "java") {
       return (
         <>
-          <h2>Java Skills</h2>
-            <ul>
-                {Java.map((skill, index) => (
-                <li key={`java-${index}`}>{skill}</li>
-                ))}
-            </ul>
+          <h2>Java & Research</h2>
+          <ul>
+            {Java.map((skill, index) => (
+              <li key={`java-${index}`}>{skill}</li>
+            ))}
+          </ul>
         </>
       );
-    } else if (selectedSkill === "c#") {
+    } else if (selectedSkill === "research") {
       return (
         <>
-          <h2>C# Skills</h2>
-            <ul>
-                {CSharp.map((skill, index) => (
-                <li key={`csharp-${index}`}>{skill}</li>
-                ))}
-            </ul>
+          <h2>Research Contributions</h2>
+          <ul>
+            {Research.map((skill, index) => (
+              <li key={`research-${index}`}>{skill}</li>
+            ))}
+          </ul>
         </>
       );
     } else {
@@ -158,15 +230,51 @@ export default function Loading({ progress, completed }) {
       <div className={styles.gridSkills}>
         <div
           onClick={() => {
-            if (selectedSkill === "javascript") {
+            if (selectedSkill === "fullstack") {
               setSelectedSkill("");
             } else {
-              setSelectedSkill("javascript");
+              setSelectedSkill("fullstack");
             }
           }}
           className={styles.skillButton}
         >
-          <h1>JavaScript</h1>
+          <h1>Full-Stack</h1>
+        </div>
+        <div
+          onClick={() => {
+            if (selectedSkill === "mobile") {
+              setSelectedSkill("");
+            } else {
+              setSelectedSkill("mobile");
+            }
+          }}
+          className={styles.skillButton}
+        >
+          <h1>Mobile</h1>
+        </div>
+        <div
+          onClick={() => {
+            if (selectedSkill === "devops") {
+              setSelectedSkill("");
+            } else {
+              setSelectedSkill("devops");
+            }
+          }}
+          className={styles.skillButton}
+        >
+          <h1>DevOps</h1>
+        </div>
+        <div
+          onClick={() => {
+            if (selectedSkill === "specialized") {
+              setSelectedSkill("");
+            } else {
+              setSelectedSkill("specialized");
+            }
+          }}
+          className={styles.skillButton}
+        >
+          <h1>Specialized</h1>
         </div>
         <div
           onClick={() => {
@@ -182,15 +290,15 @@ export default function Loading({ progress, completed }) {
         </div>
         <div
           onClick={() => {
-            if (selectedSkill === "c#") {
+            if (selectedSkill === "research") {
               setSelectedSkill("");
             } else {
-              setSelectedSkill("c#");
+              setSelectedSkill("research");
             }
           }}
           className={styles.skillButton}
         >
-          <h1>C#</h1>
+          <h1>Research</h1>
         </div>
       </div>
       <div
